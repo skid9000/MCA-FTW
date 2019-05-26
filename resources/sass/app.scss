@@ -1,8 +1,45 @@
-// Semantic
-@import '../semantic/dist/semantic.css';
-
 // Font
 @import 'lato.css';
 
+// Semantic
+@import '../semantic/dist/semantic.css';
+
 // Variables
 @import 'variables';
+
+.minimargin {
+    margin-top: 5em;
+}
+
+.break {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+code.code {
+    margin-left: 0.125em;
+    margin-right: 0.125em;
+    color: #cf0202;
+}
+
+.darkbg {
+    background-color: #252525;
+    label {
+        color: unset !important;
+    }
+    .header:not(.item) {
+        color: unset !important;
+    }
+    .ui.list > .item .description {
+        color: unset !important;
+    }
+    .field > input, .field > textarea, .ui.input > input {
+        background-color: #404040 !important;
+        color: #c8c8c8 !important;
+    }
+    .ui.label:not(.ribbon) {
+        background-color: #1B1C1D !important;
+        border-color: #c8c8c8 !important;
+        color: #FFFFFF !important;
+    }
+}
