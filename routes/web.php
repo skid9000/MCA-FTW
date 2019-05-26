@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/admin', function () {
-    return view('admin');
-})->name('admin')->middleware('auth:web');
+Route::get('/admin', 'HomeController@admin')->name('admin')->middleware('auth:web');
+Route::get('/admin/console', 'HomeController@console')->name('console')->middleware('auth:web');
+
+Route::post('/admin/rcon', 'RCONController@execCmd')->middleware('auth:web')->name('rcon');
