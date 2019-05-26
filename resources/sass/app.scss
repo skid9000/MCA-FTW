@@ -1,8 +1,8 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// Semantic
+@import '../semantic/dist/semantic.css';
+
+// Font
+@import 'lato.css';
 
 // Variables
 @import 'variables';
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
