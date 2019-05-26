@@ -1,19 +1,11 @@
 /node_modules
 /public/hot
 /public/storage
-/public/css
-/public/fonts
-/public/images
-/public/js
 /storage/*.key
 /vendor
-/resources/semantic/dist/
 .env
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-
-# Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
-.rocketeer/
