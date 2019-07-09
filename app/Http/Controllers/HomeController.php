@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Storage;
 
 class HomeController extends Controller
 {
@@ -32,5 +33,10 @@ class HomeController extends Controller
 
 	public function console() {
         return view('console');
+	}
+
+	public function logs() {
+		$items = Storage::disk('mc-root')->listContents('/logs', true);
+        return view('logs', ['items' => $items]);
     }
 }
