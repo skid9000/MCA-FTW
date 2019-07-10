@@ -11,10 +11,9 @@
 		</div>
 	</div>
 	<div class="ui attached segment">
-		<div class="ui two column grild">
+		<div class="ui two column grid">
 			<div class="left aligned three wide column">
 				<div class="ui attached menu vertical">
-
 					@foreach ($items as $item)
 						<a class="item" href="/admin/logs/?file={{ $item['basename'] }}"> {{ $item['basename'] }} </a>
 					@endforeach
@@ -22,7 +21,7 @@
 			</div>
 			<div class="right aligned thirteen wide column">
 				<div class="ui segment">
-					<p style="white-space: pre-line;">
+					<p style="white-space: pre-line; text-align: left;">
 						{{ $log_content }}
 					</p>
 				</div>
