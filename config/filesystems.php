@@ -57,7 +57,7 @@ return [
 
 		'mc-root' => [
             'driver' => 'local',
-            'root' => storage_path(env("MC_SERVER_ROOT")),
+            'root' => env("MC_SERVER_ROOT"),
 		],
 
         's3' => [

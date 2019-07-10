@@ -11,19 +11,19 @@
 		</div>
 	</div>
 	<div class="ui attached segment">
-		<div class="ui two column grid">
-			<div class="left aligned two wide column">
+		<div class="ui two column grild">
+			<div class="left aligned three wide column">
 				<div class="ui attached menu vertical">
 
-					@php dd($items) @endphp
 					@foreach ($items as $item)
-						<div class="item"> {{ $item['basename'] }} </div>
+						<a class="item" href="/admin/logs/?file={{ $item['basename'] }}"> {{ $item['basename'] }} </a>
 					@endforeach
 				</div>
 			</div>
-			<div class="right aligned fourteen wide column">
+			<div class="right aligned thirteen wide column">
 				<div class="ui segment">
-					<p>
+					<p style="white-space: pre-line;">
+						{{ $log_content }}
 					</p>
 				</div>
 			</div>
