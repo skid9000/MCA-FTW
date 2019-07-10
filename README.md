@@ -2,16 +2,22 @@
 
 Minecraft Admin ToolKit For The Web
 
+## Dependencies
+
+* [PHP](https://php.net) 7.1 =<
+* [NodeJS](https://nodejs.org) 10 =<
+* [Composer](https://getcomposer.org)
+
 ## Installation
 
-You'll need to install [composer](https://getcomposer.org) for PHP dependencies, [Nodejs](https://nodejs.org) to compile assets.
-
 First, install PHP dependencies:
+
 ```bash
 composer install
 ```
 
 Then build assets:
+
 ```bash
 npm i
 cd resources/semantic
@@ -21,22 +27,21 @@ npm run production
 ```
 
 Configure the .env file correctly:
+
 ```bash
 cp .env.production-example .env
 $EDITOR .env
 php artisan key:generate
 ```
 
-Then setup the database:
-```
-php artisan migrate
-```
+If you want to use SQLite you must create the database file itself:
 
-To use SQLite, replace the whole `DB_*` block by this:
-```
-DB_CONNECTION=sqlite
-```
-You must also create the database file itself:
 ```bash
 touch database/database.sqlite
+```
+
+Then setup the database:
+
+```bash
+php artisan migrate
 ```
