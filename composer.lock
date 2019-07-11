@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5dd346ea4d2ee48054a1cf61eef0e4c5",
+    "content-hash": "64e6480e56532ea1ad9250d55439ca4c",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2674,6 +2674,39 @@
                 "environment"
             ],
             "time": "2019-03-06T09:39:45+00:00"
+        },
+        {
+            "name": "xpaw/php-minecraft-query",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xPaw/PHP-Minecraft-Query.git",
+                "reference": "881072933d4537f334ce96ebcf687868c100fbb9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xPaw/PHP-Minecraft-Query/zipball/881072933d4537f334ce96ebcf687868c100fbb9",
+                "reference": "881072933d4537f334ce96ebcf687868c100fbb9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "xPaw\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP library to query Minecraft servers",
+            "keywords": [
+                "minecraft"
+            ],
+            "time": "2019-07-08T10:15:30+00:00"
         }
     ],
     "packages-dev": [

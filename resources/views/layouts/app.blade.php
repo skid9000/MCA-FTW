@@ -20,12 +20,22 @@
         <nav class="ui fixed inverted menu">
             <div class="ui container">
                 <a class="header item" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+					{{ config('app.name', 'Laravel') }}
+					<a class="item" href="{{ route('home') }}">Home</a>
                     <a class="item" href="{{ route('admin') }}">Admin panel</a>
                 </a>
 
 
                 <div class="right menu" id="navbarSupportedContent">
+					@guest
+					@else
+						<a class="item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+							<i class="logout icon"></i> Log out
+						</a>
+						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+							@csrf
+						</form>
+					@endguest
                 </div>
             </div>
         </nav>

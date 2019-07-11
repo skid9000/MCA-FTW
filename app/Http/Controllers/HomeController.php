@@ -4,31 +4,60 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Storage;
+use xPaw\MinecraftQuery;
+use xPaw\MinecraftQueryException;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+	public function home() {
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        return view('home');
-    }
+		$Query = new MinecraftQuery( );
+
+		try { $Query->Connect( env('MC_QUERY_HOST'), env('MC_QUERY_PORT'), 1 ); }	catch( MinecraftQueryException $e )	{ $Exception = $e; }
+
+		$info = $Query->GetInfo();
+
+		if($info != false) {
+			$g_status = "Online";
+			$c_player = $info['Players'];
+			$m_player = $info['MaxPlayers'];
+			$g_version = $info['Version'];
+		}
+		else {
+			$g_status = "Offline";
+			$c_player = "NA";
+			$m_player = "NA";
+			$g_version = "Unknown";
+		}
+
+		$img = base64_encode(file_get_contents(config('filesystems.disks.mc-root.root'). "/server-icon.png"));
+		$name = env("MC_SERVER_NAME");
+        return view('home', ['img' => $img, 'name' => $name, 'c_player' => $c_player, 'm_player' => $m_player, 'g_version' => $g_version, 'g_status' => $g_status]);
+	}
 
     public function admin() {
-        return view('admin');
+
+		$Query = new MinecraftQuery( );
+
+		try { $Query->Connect( env('MC_QUERY_HOST'), env('MC_QUERY_PORT'), 1 ); }	catch( MinecraftQueryException $e )	{ $Exception = $e; }
+
+		$info = $Query->GetInfo();
+		if($info != false) {
+			$g_status = "Online";
+			$c_player = $info['Players'];
+			$m_player = $info['MaxPlayers'];
+			$g_version = $info['Version'];
+		}
+		else {
+			$g_status = "Offline";
+			$c_player = "NA";
+			$m_player = "NA";
+			$g_version = "Unknown";
+		}
+
+		$img = base64_encode(file_get_contents(config('filesystems.disks.mc-root.root'). "/server-icon.png"));
+		$name = env("MC_SERVER_NAME");
+        return view('admin', ['img' => $img, 'name' => $name, 'c_player' => $c_player, 'm_player' => $m_player, 'g_version' => $g_version, 'g_status' => $g_status]);
 	}
 
 	public function console() {
@@ -61,6 +90,6 @@ class HomeController extends Controller
 		else {
 			$log_content = "Please select a file";
 		}
-        return view('logs', ['items' => $items], ['log_content' => $log_content]);
+        return view('logs', ['items' => $items, 'log_content' => $log_content]);
     }
 }

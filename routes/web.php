@@ -11,11 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+
+Route::get('/', 'HomeController@home')->name('home');
 
 Route::get('/admin', 'HomeController@admin')->name('admin')->middleware('auth:web');
 Route::get('/admin/console', 'HomeController@console')->name('console')->middleware('auth:web');
