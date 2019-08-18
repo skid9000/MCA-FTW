@@ -64,6 +64,10 @@ class HomeController extends Controller
         return view('console');
 	}
 
+	public function editor() {
+        return view('editor');
+	}
+
 	public function logs() {
 		$items = Storage::disk('mc-root')->listContents('/logs', true);
 		if (isset($_GET['file'])) {
