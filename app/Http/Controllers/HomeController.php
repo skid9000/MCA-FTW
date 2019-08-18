@@ -64,8 +64,19 @@ class HomeController extends Controller
         return view('console');
 	}
 
-	public function editor() {
-        return view('editor');
+	public function getFile(Request $request) {
+		return json_encode(['content' => Storage::disk('mc-root')->get('/'.$request->input('name'))]);
+	}
+
+	public function getDirContent(Request $request) {
+		return json_encode(['dirs' => Storage::disk('mc-root')->directories('/'.$request->input('name')), 'files' => Storage::disk('mc-root')->files('/'.$request->input('name'))]);
+	}
+
+	public function config() {
+		$items = Storage::disk('mc-root')->files('/');
+		$dirs = Storage::disk('mc-root')->directories('/');
+		//dd($items);
+        return view('config', ['items' => $items, 'dirs' => $dirs]);
 	}
 
 	public function logs() {

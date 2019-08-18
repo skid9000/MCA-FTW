@@ -23,6 +23,7 @@ window.Vue = require('vue');
 
 Vue.component('console', require('./components/Console.vue').default);
 Vue.component('editor', require('./components/Editor.vue').default);
+Vue.component('folderlist', require('./components/FolderList.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,6 +31,11 @@ Vue.component('editor', require('./components/Editor.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
+$(document).ready(() => {
+    const app = new Vue({
+        el: '#app',
+        mounted() {
+            console.log('hello! i\'m mounted incredible !');
+        }
+    });
 });
