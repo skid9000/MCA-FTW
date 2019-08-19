@@ -2,7 +2,7 @@
 	<span>
 		<div class="ui attached segment">
 			<div class="ui middle aligned divided list">
-				<div class="item" v-for="command in commands">
+				<div class="item" v-bind:key="command.log" v-for="command in commands">
 					<div class="right floated content">
 						<div class="ui horizontal label" v-bind:class="{ blue: command.theme == 'blue', red: command.theme == 'red', green: command.theme == 'green' }">{{ new Date(command.timestamp).toLocaleString() }}</div>
 					</div>
@@ -18,7 +18,7 @@
 						<i class="send icon"></i>
 						Send command
 					</button>
-					<button class="ui orange right labeled icon button">
+					<button class="ui orange right labeled icon button" @click="clearConsole">
 						<i class="bomb icon"></i>
 						Clear console
 					</button>
@@ -53,6 +53,10 @@ export default {
 				}
 			});
 			this.command = '';
+		},
+		clearConsole(){
+			this.commands = [];
+			return true;
 		}
 	},
 
@@ -720,7 +724,10 @@ export default {
 			fields: {
 				title: 'title'
 			},
-			showNoResults: false
+			showNoResults: false,
+			onSelect: (result, response) => {
+				this.command = result.title.replace(/&lt;/gi, '<').replace(/&gt;/gi, '>');
+			}
 		});
 	}
 }
