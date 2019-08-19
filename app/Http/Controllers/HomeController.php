@@ -75,7 +75,6 @@ class HomeController extends Controller
 	public function config() {
 		$items = Storage::disk('mc-root')->files('/');
 		$dirs = Storage::disk('mc-root')->directories('/');
-		//dd($items);
         return view('config', ['items' => $items, 'dirs' => $dirs]);
 	}
 
