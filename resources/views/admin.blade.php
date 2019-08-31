@@ -14,6 +14,7 @@
 					<div class="players">Players : {{$c_player}} / {{$m_player}}</div>
 					<div class="version">Game version : {{$g_version}}</div>
 					<a class="ui button" href="/admin/console">Console</a>
+					<a class="ui button" href="/admin/config">Config Editor</a>
 					<a class="ui button" href="/admin/logs">Logs</a>
 				</div>
 			</div>
