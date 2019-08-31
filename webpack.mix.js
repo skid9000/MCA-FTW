@@ -14,12 +14,16 @@ const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/rcon.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+	.sass('resources/sass/app.scss', 'public/css')
+	.sourceMaps();
 
 mix.webpackConfig(webpack => {
 	return { plugins:
 		[
-			new MonacoWebpackPlugin()
+			new MonacoWebpackPlugin({
+				languages: ['json', 'yaml'],
+				output: 'js/monaco'
+			})
 		]
 	}
 });

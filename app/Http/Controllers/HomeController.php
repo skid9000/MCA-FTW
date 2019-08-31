@@ -65,7 +65,16 @@ class HomeController extends Controller
 	}
 
 	public function getFile(Request $request) {
-		return json_encode(['content' => Storage::disk('mc-root')->get('/'.$request->input('name'))]);
+		return json_encode(['name' => $request->input('name'),'content' => Storage::disk('mc-root')->get('/'.$request->input('name'))]);
+	}
+
+	public function saveFile(Request $request) {
+		$request->validate([
+			'name' => 'required',
+			'value' => 'required'
+		]);
+		Storage::disk('mc-root')->put('/'.$request->input('name'), $request->input('value'));
+		return response()->json(true);
 	}
 
 	public function getDirContent(Request $request) {

@@ -24,6 +24,7 @@ window.Vue = require('vue');
 Vue.component('console', require('./components/Console.vue').default);
 Vue.component('editor', require('./components/Editor.vue').default);
 Vue.component('folderlist', require('./components/FolderList.vue').default);
+Vue.component('folderlistinside', require('./components/FolderListIsInside.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -11,13 +11,15 @@
 			<div class="ui two column grid">
 				<div class="three wide column">
 					<div class="ui list">
-						<a class="item" @click='getDirContent("/")' v-if="curdir != 0"> <i class="ui folder icon"></i> [GO TO ROOT] </a>
-						<a class="item" @click="getDirContent(dir)" v-for="dir in pdirs" v-bind:key="dir"> <i class="ui folder icon"></i> {{ dir.substring(torm.length) }} </a>
+						<span class="item" v-for="dir in pdirs" v-bind:key="dir.name">
+							<a @click="dir.isOpened = !dir.isOpened"> <i class="ui folder icon" v-bind:class="{ open: dir.isOpened }"></i> {{ dir.name }} </a>
+							<folderlistinside :name="dir.name" v-if="dir.isOpened" v-on:setFile="setFile"></folderlistinside>
+						</span>
 						<a class="item" @click="setFile(file)" v-for="file in pfiles" v-bind:key="file"> <i class="ui file icon"></i> {{ file.substring(torm.length) }} </a>
 					</div>
 				</div>
 				<div class="thirteen wide column">
-					<editor :value="fileval"></editor>
+					<editor :value="fileval" :name="name" :extension="extension"></editor>
 				</div>
 			</div>
 		</div>
@@ -31,44 +33,27 @@ export default {
 	data() {
 		return {
 			pfiles: JSON.parse(this.files),
-			pdirs : JSON.parse(this.dirs),
+			pdirs : this.initFolders(JSON.parse(this.dirs)),
 			curdir: 0,
 			dirname: "",
 			torm: "",
-			fileval: 'Please select a file.'
+			fileval: 'Please select a file.',
+			name: null,
+			extension: null
 		}
 	},
 
 	methods: {
+		initFolders(dirs) {
+			return dirs.map(val => {
+				return {name: val, isOpened: false};
+			});
+		},
 		setFile(name) {
 			axios.get('/admin/api/getfile?name=' + name).then(res => {
 				this.fileval = res.data.content;
-			})
-		},
-		getDirContent(name) {
-			axios.get('/admin/api/getdircontent?name=' + name).then(res => {
-				if (name == "/") {
-					this.curdir = 0;
-					this.torm = "";
-					this.pdirs = res.data.dirs;
-					this.pfiles = res.data.files;
-				}
-				else {
-					if (this.curdir = 0) {
-						this.curdir = name.length + 1
-						this.torm = name.substring(0,this.curdir) + "/"
-						this.pdirs = res.data.dirs;
-						this.pfiles = res.data.files;
-					}
-					else {
-						this.curdir = name.length + 1
-						this.torm = name.substring(0,this.curdir) + "/"
-						this.pdirs = res.data.dirs;
-						this.pfiles = res.data.files;
-					}
-
-				}
-
+				this.name = res.data.name;
+				this.extension = this.name.slice((this.name.lastIndexOf(".") - 1 >>> 0) + 2);
 			})
 		}
 	}
