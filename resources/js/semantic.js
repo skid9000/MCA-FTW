@@ -8,10 +8,9 @@ window._ = require('lodash');
  */
 
 try {
-    // window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
-    require('../semantic/dist/semantic.min');
+    require('../fomantic/dist/semantic.min');
 } catch (e) {}
 
 /**
