@@ -5,7 +5,7 @@
 /public/js
 /public/css
 /storage/*.key
-/resources/semantic/dist
+/resources/fomantic/dist
 /vendor
 .env
 .phpunit.result.cache
