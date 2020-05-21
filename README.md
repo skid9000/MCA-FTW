@@ -4,7 +4,7 @@ Minecraft Admin ToolKit For The Web
 
 ## Dependencies
 
-* [PHP](https://php.net) 7.1 =<
+* [PHP](https://php.net) 7.2 =<
 * [NodeJS](https://nodejs.org) 10 =<
 * [Composer](https://getcomposer.org)
 
@@ -16,13 +16,10 @@ First, install PHP dependencies:
 composer install
 ```
 
-Then build assets:
+Then install and build assets:
 
 ```bash
 npm i
-cd resources/semantic
-npx gulp build
-cd ../..
 npm run production
 ```
 
