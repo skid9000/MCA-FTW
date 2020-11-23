@@ -2,9 +2,10 @@
 
 namespace App\Repositories;
 
+use Hash;
 use App\User;
 use Illuminate\Http\Request;
-use Yajra\DataTables\Facades\Datatables;
+use Yajra\DataTables\Facades\DataTables;
 use Hexters\Ladmin\Contracts\MasterRepositoryInterface;
 
 class UserRepository extends Repository implements MasterRepositoryInterface {
@@ -87,7 +88,7 @@ class UserRepository extends Repository implements MasterRepositoryInterface {
   public function createUser(Request $request) {
 
     $request->merge([
-      'password' => bcrypt($request->pass)
+      'password' => Hash::make($request->pass)
     ]);
     $this->model->create($request->all());
 

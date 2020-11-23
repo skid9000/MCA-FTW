@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Hexters\Ladmin\Models\Role;
 use Illuminate\Http\Request;
-use Yajra\DataTables\Facades\Datatables;
+use Yajra\DataTables\Facades\DataTables;
 use Hexters\Ladmin\Contracts\MasterRepositoryInterface;
 
 class RoleRepository extends Repository implements MasterRepositoryInterface {
