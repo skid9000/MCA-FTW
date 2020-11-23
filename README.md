@@ -42,3 +42,15 @@ Then setup the database:
 ```bash
 php artisan migrate
 ```
+
+Finally, create your first user :
+
+```bash
+php artisan create:admin <name> <email>
+```
+
+The temporary password will be printed out on your terminal, dont forget to change it.
+
+```
+http(s)://<url>/usermgmt
+```

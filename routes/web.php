@@ -11,6 +11,8 @@
 |
 */
 
+use Hexters\Ladmin\Routes\Ladmin;
+
 Auth::routes();
 
 Route::get('/', 'HomeController@home')->name('home');
@@ -24,3 +26,12 @@ Route::post('/admin/api/savefile', 'HomeController@saveFile')->name('savefile')-
 Route::get('/admin/api/getdircontent', 'HomeController@getDirContent')->name('getdircontent')->middleware('auth:web');
 
 Route::post('/admin/rcon', 'RCONController@execCmd')->middleware('auth:web')->name('rcon');
+
+Ladmin::route(function() {
+
+    // Your module route here
+
+    // namespace App\Http\Controllers\Administrator
+    Route::resource('withdrawal', 'WithdrawalController');
+
+});
